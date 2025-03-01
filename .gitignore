@@ -41,7 +41,3 @@ yarn-error.log*
 next-env.d.ts
 
 #back
-/backend
-/backend/node_modules
-/backend/.cache
-/backend/build
