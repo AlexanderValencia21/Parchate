@@ -1,11 +1,7 @@
 [build]
-  base = "/"
-  publish = ".next" 
-  command = "npm install && npm run build"
+  base = "/"  
+  command = "cd app && npm install && npm run build" 
+  publish = "app/.next" 
 
-[build.environment]
-  NODE_VERSION = "18"
-
-
-[dev]
-  framework = "next"
+[[ignore]]
+  path = "backend/*"  #
