@@ -10,6 +10,7 @@ interface Evento {
   Titulo?: string;
   Organizador?: string;
   Descripcion?: string | any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Imagen?: {
     url?: string;
     data?: {
@@ -22,6 +23,7 @@ interface Evento {
     Titulo?: string;
     Organizador?: string;
     Descripcion?: string | any[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Imagen?: {
       data?: {
         attributes?: {
@@ -94,8 +96,6 @@ export default function Explora() {
             console.error("Estructura de evento desconocida:", evento);
             return null;
           }
-          
-          
           return (
             <EventCard
               key={`${evento.id || index}-${Math.random()}`}
