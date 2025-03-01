@@ -1,7 +1,4 @@
 [build]
   base = "/"  
   command = "cd app && npm install && npm run build" 
-  publish = "app/.next" 
-
-[[ignore]]
-  path = "backend/*"  #
+  publish = ".next" 
