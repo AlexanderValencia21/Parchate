@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { getEventos } from "@/utils/api";
 import EventCard from "@/components/EventCard";
 import ExploraHeader from "@/components/ExploraHeader";
-import Navbar from "@/components/Navbar";
-
 export default function Explora() {
   const [eventos, setEventos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import EventsSection from "@/components/EventsSection";
 import ActionSection from "@/components/ActionSection";
 import { Parisienne } from "next/font/google";

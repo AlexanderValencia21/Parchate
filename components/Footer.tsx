@@ -2,10 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
   faFacebook,
-  faSearchengin,
 } from "@fortawesome/free-brands-svg-icons";
 import { Parisienne } from "next/font/google";
-
+import Link from "next/link";
 const parisienne = Parisienne({
   weight: "400",
   subsets: ["latin"],
@@ -24,17 +23,17 @@ const Footer = () => {
   {/* Enlaces */}
   <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
     <div className="flex flex-col space-y-2">
-      <a href="/" className="hover:text-gray-800">Nosotros</a>
-      <a href="/eventos" className="hover:text-gray-800">Explora</a>
-      <a href="/contacto" className="hover:text-gray-800">Contacto</a>
+      <Link href="/" className="hover:text-gray-800">Nosotros</Link>
+      <Link href="/eventos" className="hover:text-gray-800">Explora</Link>
+      <Link href="/contacto" className="hover:text-gray-800">Contacto</Link>
     </div>
     <div className="flex flex-col space-y-2">
-      <a href="#" className="hover:text-gray-800">Términos de Uso</a>
-      <a href="#" className="hover:text-gray-800">Privacidad y Datos</a>
-      <a href="#" className="hover:text-gray-800">Uso de Cookies</a>
-      <a href="https://www.google.com/maps/search/?q=Marabunta+Agencia+Creativa" target="_blank" className="hover:text-gray-800">
+      <Link href="#" className="hover:text-gray-800">Términos de Uso</Link>
+      <Link href="#" className="hover:text-gray-800">Privacidad y Datos</Link>
+      <Link href="#" className="hover:text-gray-800">Uso de Cookies</Link>
+      <Link href="https://www.google.com/maps/search/?q=Marabunta+Agencia+Creativa" target="_blank" className="hover:text-gray-800">
         Mapa del Sitio
-      </a>
+      </Link>
     </div>
   </div>
 

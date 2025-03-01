@@ -2,8 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Parisienne } from "next/font/google";
-const parisienne = Parisienne({ subsets: ["latin"], weight: "400" });
 const Navbar=()=>{
   const [isOpen, setIsOpen] = useState<boolean>(false);
     return(
@@ -19,9 +17,9 @@ const Navbar=()=>{
 
       {/* Links */}
       <div className="hidden md:flex space-x-8 text-gray-800 font-medium">
-        <a href="/" className="hover:text-gray-500">Inicio</a>
-        <a href="/eventos" className="hover:text-gray-500">Explora</a>
-        <a href="/contacto" className="hover:text-gray-500">Contacto</a>
+        <Link href="/" className="hover:text-gray-500">Inicio</Link>
+        <Link href="/eventos" className="hover:text-gray-500">Explora</Link>
+        <Link href="/contacto" className="hover:text-gray-500">Contacto</Link>
       </div>
       {/* Menú móvil */}
       {isOpen && (
