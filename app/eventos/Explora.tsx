@@ -28,7 +28,6 @@ export default function Explora() {
       }
     }
     fetchEventos();
-    document.documentElement.style.zoom = "1";
   }, []);
   if (isLoading) {
     return (
