@@ -68,7 +68,7 @@ export default function Explora() {
   
   
   return (
-    <div className="w-screen min-h-screen bg-[url('/blur.png')] md:bg-[url('/frame=3.jpg')]bg-cover bg-center overflow-hidden">
+    <div className="w-screen min-h-screen bg-[url('/blur.png')] md:bg-[url('/frame=3.jpg')] bg-cover bg-center overflow-hidden">
       <ExploraHeader/>
     <div className="flex flex-wrap justify-center gap-6 p-6 ">
     {eventos && eventos.length > 0 ? (
