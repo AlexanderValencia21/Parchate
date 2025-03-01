@@ -1,14 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-interface DescriptionBlock {
-  type: string;
-  children: {
-    type: string;
-    text: string;
-  }[];
-}
+import { DescriptionBlock } from "@/utils/types";
 
 interface EventCardProps {
   title: string;

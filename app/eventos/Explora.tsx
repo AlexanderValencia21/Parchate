@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { getEventos } from "@/utils/api";
 import EventCard from "@/components/EventCard";
 import ExploraHeader from "@/components/ExploraHeader";
+import { DescriptionBlock } from "@/utils/types";
 
 interface Evento {
   id?: string | number;
   Titulo?: string;
   Organizador?: string;
-  Descripcion?: string | any[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Descripcion?: string |  DescriptionBlock[];
   Imagen?: {
     url?: string;
     data?: {
@@ -22,8 +22,7 @@ interface Evento {
   attributes?: {
     Titulo?: string;
     Organizador?: string;
-    Descripcion?: string | any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Descripcion?: string | DescriptionBlock[];
     Imagen?: {
       data?: {
         attributes?: {
@@ -101,7 +100,10 @@ export default function Explora() {
               key={`${evento.id || index}-${Math.random()}`}
               title={title || "Sin título"}
               organizer={organizer || "Sin organizador"}
-              description={Array.isArray(description) ? description : [{ text: description || "Sin descripción" }]}
+              description={Array.isArray(description) 
+                ? description 
+                : [{ type: "paragraph", children: [{ type: "text", text: description || "Sin descripción" }] }]
+              }
               imageUrl={imageUrl || "https://placehold.co/600x400?text=No+Image"}
             />
           );
