@@ -4,8 +4,35 @@ import { useEffect, useState } from "react";
 import { getEventos } from "@/utils/api";
 import EventCard from "@/components/EventCard";
 import ExploraHeader from "@/components/ExploraHeader";
+
+interface Evento {
+  id?: string | number;
+  Titulo?: string;
+  Organizador?: string;
+  Descripcion?: string | any[];
+  Imagen?: {
+    url?: string;
+    data?: {
+      attributes?: {
+        url?: string;
+      }
+    }
+  };
+  attributes?: {
+    Titulo?: string;
+    Organizador?: string;
+    Descripcion?: string | any[];
+    Imagen?: {
+      data?: {
+        attributes?: {
+          url?: string;
+        }
+      }
+    }
+  };
+}
 export default function Explora() {
-  const [eventos, setEventos] = useState([]);
+  const [eventos, setEventos] = useState<Evento[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -71,7 +98,7 @@ export default function Explora() {
               key={`${evento.id || index}-${Math.random()}`}
               title={title || "Sin título"}
               organizer={organizer || "Sin organizador"}
-              description={description || []}
+              description={description || " "}
               imageUrl={imageUrl || "https://placehold.co/600x400?text=No+Image"}
             />
           );
