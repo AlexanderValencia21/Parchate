@@ -31,6 +31,7 @@ interface Evento {
     }
   };
 }
+
 export default function Explora() {
   const [eventos, setEventos] = useState<Evento[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +64,8 @@ export default function Explora() {
       </div>
     );
   }
-
+  
+  
   return (
     <div className="w-screen min-h-screen bg-[url('/blur.png')] md:bg-[url('/frame=3.jpg')]bg-cover bg-center overflow-hidden">
       <ExploraHeader/>
@@ -93,12 +95,13 @@ export default function Explora() {
             return null;
           }
           
+          
           return (
             <EventCard
               key={`${evento.id || index}-${Math.random()}`}
               title={title || "Sin título"}
               organizer={organizer || "Sin organizador"}
-              description={description || " "}
+              description={Array.isArray(description) ? description : [{ text: description || "Sin descripción" }]}
               imageUrl={imageUrl || "https://placehold.co/600x400?text=No+Image"}
             />
           );
