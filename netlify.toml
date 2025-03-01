@@ -1,6 +1,11 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  base = "/"
+  publish = ".next" 
+  command = "npm install && npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
 
 [dev]
   framework = "next"
