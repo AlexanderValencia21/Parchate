@@ -109,8 +109,8 @@ const ActionSection = () => {
           <h2 className=" text-center text-4xl md:text-4xl font-bold mb-4">
             ¡Explora todo lo que tenemos para ti!
           </h2>
-          <Link href="/eventos" className="inline-block">
-            <button className="bg-[#4C3980] hover:bg-[#5A4496] text-white py-3 px-8 rounded-full font-medium transition duration-300 mt-4">
+          <Link href="/eventos" className="inline-block w-full md:w-auto">
+            <button className="bg-[#4C3980] hover:bg-[#5A4496] text-white py-3 px-8 rounded-[20px] font-medium transition duration-300 mt-4 w-full md:w-auto">
               ¡Descubre!
             </button>
           </Link>

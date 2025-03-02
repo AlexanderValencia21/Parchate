@@ -1,6 +1,7 @@
 import EventsSection from "@/components/EventsSection";
 import ActionSection from "@/components/ActionSection";
 import { Parisienne } from "next/font/google";
+import ScrollIndicator from "@/components/ScrollIndicator";
 const parisienne = Parisienne({
   weight: "400",
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default function Home() {
             </p>
           </div>
         </div>
+        <ScrollIndicator />
       </main>
 
       {/* Segunda sección (debajo de la primera) */}
