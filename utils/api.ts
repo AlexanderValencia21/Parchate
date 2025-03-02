@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://parchate-backend
 // Función para obtener todos los eventos
 export const getEventos = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/eventos?populate=*`);
+    const response = await axios.get(`${BASE_URL}/api/eventos?populate=*`);
     return response.data.data; // Strapi devuelve los datos dentro de "data"
   } catch (error) {
     console.error("Error obteniendo eventos:", error);
@@ -16,7 +16,7 @@ export const getEventos = async () => {
 // Función para obtener un evento específico por ID
 export const getEventoById = async (id: string | number) => {
   try {
-    const response = await axios.get(`${BASE_URL}/eventos/${id}?populate=*`);
+    const response = await axios.get(`${BASE_URL}/api/eventos/${id}?populate=*`);
     return response.data.data; // Strapi devuelve los datos dentro de "data"
   } catch (error) {
     console.error(`Error obteniendo evento con ID ${id}:`, error);
