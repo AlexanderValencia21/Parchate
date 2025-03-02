@@ -31,7 +31,7 @@ const Footer = () => {
       <Link href="#" className="hover:text-gray-800">Términos de Uso</Link>
       <Link href="#" className="hover:text-gray-800">Privacidad y Datos</Link>
       <Link href="#" className="hover:text-gray-800">Uso de Cookies</Link>
-      <Link href="https://www.google.com/maps/search/?q=Marabunta+Agencia+Creativa" target="_blank" className="hover:text-gray-800">
+      <Link href="https://www.google.com/maps/place/?q=Marabunta+Agencia+Creativa" target="_blank" className="hover:text-gray-800">
         Mapa del Sitio
       </Link>
     </div>
