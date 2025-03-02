@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://parchate-backend.onrender.com';
-
+//const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://parchate-backend.onrender.com';
+const BASE_URL ="http://localhost:1337"
 // Función para obtener todos los eventos
 export const getEventos = async () => {
   try {
