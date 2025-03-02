@@ -88,11 +88,9 @@ export default function Explora() {
             title = evento.attributes.Titulo;
             organizer = evento.attributes.Organizador;
             description = evento.attributes.Descripcion;
-            imageUrl = evento.attributes.Imagen?.data?.attributes?.url
-              ? `https://parchate-backend.onrender.com${evento.attributes.Imagen.data.attributes.url}`
+            imageUrl = evento.Imagen?.url
+              ? `https://parchate-backend.onrender.com${evento.Imagen.url}`
               : "https://placehold.co/600x400?text=No+Image";
-              console.log("Imagen URL:", imageUrl);
-
           } else {
             console.error("Estructura de evento desconocida:", evento);
             return null;
