@@ -83,13 +83,13 @@ export default function Explora() {
             title = evento.Titulo;
             organizer = evento.Organizador;
             description = evento.Descripcion;
-            imageUrl = evento.Imagen ? `http://localhost:1337${evento.Imagen.url}` : "https://placehold.co/600x400?text=No+Image";
+            imageUrl = evento.Imagen ? `https://parchate-backend.onrender.com${evento.Imagen.url}` : "https://placehold.co/600x400?text=No+Image";
           } else if (evento.attributes) {
             title = evento.attributes.Titulo;
             organizer = evento.attributes.Organizador;
             description = evento.attributes.Descripcion;
             imageUrl = evento.attributes.Imagen?.data?.attributes?.url
-              ? `http://localhost:1337${evento.attributes.Imagen.data.attributes.url}`
+              ? `https://parchate-backend.onrender.com${evento.attributes.Imagen.data.attributes.url}`
               : "https://placehold.co/600x400?text=No+Image";
           } else {
             console.error("Estructura de evento desconocida:", evento);
