@@ -50,7 +50,7 @@ export default function Home() {
         <ScrollIndicator />
       </main>
 
-      {/* Segunda sección (debajo de la primera) */}
+      //secciones para la pagina de incio
       <section className="w-full">
         <EventsSection />
       </section>

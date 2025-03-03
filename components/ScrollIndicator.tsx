@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-
+//animacion para la pagina principal
 const ScrollIndicator = () =>  {
   return (
     <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 block md:hidden">

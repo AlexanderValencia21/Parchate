@@ -37,6 +37,7 @@ export default function Explora() {
   const [eventos, setEventos] = useState<Evento[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  //Consultar la api de strapi
   useEffect(() => {
     async function fetchEventos() {
       try {
@@ -44,7 +45,6 @@ export default function Explora() {
         const data = await getEventos();
         console.log("Datos recibidos:", data);
         
-        // Si tienes al menos un evento, examina su estructura
         if (data && data.length > 0) {
           console.log("Estructura del primer evento:", data[0]);
         }
@@ -58,6 +58,7 @@ export default function Explora() {
     }
     fetchEventos();
   }, []);
+  //Efecto de pantalla de carga
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-[50vh]">

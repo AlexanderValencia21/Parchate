@@ -116,8 +116,6 @@ const ActionSection = () => {
           </Link>
         </div>
       </div>
-
-      {/* Gradiente sutiles para mejorar la legibilidad */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 pointer-events-none"></div>
     </div>
   );
