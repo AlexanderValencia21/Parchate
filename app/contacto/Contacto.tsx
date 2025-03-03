@@ -1,6 +1,14 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faPhone, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faPhone,
+  faMapMarkerAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { Parisienne } from "next/font/google";
+import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
+
 const parisienne = Parisienne({
   weight: "400",
   subsets: ["latin"],
@@ -11,7 +19,90 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
+
+interface FormData {
+  nombre: string;
+  email: string;
+  mensaje: string;
+}
+
 export default function Contacto() {
+  useEffect(() => {
+    emailjs.init("7eRZtIGSSFMoZe1Gi");
+  }, []);
+  const [formData, setFormData] = useState<FormData>({
+    nombre: "",
+    email: "",
+    mensaje: "",
+  });
+  const [charCount, setCharCount] = useState(0);
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    success: false,
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    if (name === "mensaje") {
+      setCharCount(value.length);
+    }
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus({ ...status, submitting: true });
+
+    try {
+      const serviceId = "service_v4n33x3";
+      const templateId = "template_tzyywgi";
+      const publicKey = "7eRZtIGSSFMoZe1Gi";
+
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.nombre,
+          reply_to: formData.email,
+          message: formData.mensaje,
+        },
+        publicKey
+      );
+
+      if (response.status === 200) {
+        setStatus({
+          submitting: false,
+          submitted: true,
+          success: true,
+          message: "¡Mensaje enviado con éxito!",
+        });
+
+        // Resetear el formulario
+        setFormData({
+          nombre: "",
+          email: "",
+          mensaje: "",
+        });
+        setCharCount(0);
+      }
+    } catch (error) {
+      setStatus({
+        submitting: false,
+        submitted: true,
+        success: false,
+        message: "Error al enviar el mensaje. Por favor intenta de nuevo.",
+      });
+    }
+  };
   return (
     <div className="min-h-screen bg-black bg-[url('/frame1_mobile.png')] md:bg-[url('/frame=2.png')] bg-cover bg-center flex justify-center items-center p-6">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-20">
@@ -28,7 +119,7 @@ export default function Contacto() {
             Estamos para ti, cuéntanos tus dudas, ¡las resolvemos!
           </p>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label
                 className={`${montserrat.className} text-white block font-semibold`}
@@ -37,7 +128,10 @@ export default function Contacto() {
               </label>
               <input
                 type="text"
-                className="w-full bg-transparent border-b border-white focus:outline-none focus:border-purple-400 text-[#2E294E] p-2"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                className="w-full bg-transparent border-b border-white focus:outline-none focus:border-purple-400 text-white p-2"
               />
             </div>
             <div>
@@ -48,7 +142,10 @@ export default function Contacto() {
               </label>
               <input
                 type="email"
-                className="w-full bg-transparent border-b border-white focus:outline-none focus:border-purple-400 text-[#2E294E] p-2"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full bg-transparent border-b border-white focus:outline-none focus:border-purple-400 text-white p-2"
               />
             </div>
             <div>
@@ -58,15 +155,29 @@ export default function Contacto() {
                 Déjanos tu mensaje
               </label>
               <textarea
+                name="mensaje"
                 rows={4}
                 maxLength={500}
-                className="w-full bg-transparent border-b border-white focus:outline-none focus:border-purple-400 text-[#2E294E] p-2"
+                value={formData.mensaje}
+                onChange={handleChange}
+                className="w-full bg-transparent border-b border-white focus:outline-none focus:border-purple-400 text-white p-2"
               />
-              <span className="text-white text-xs">0/500</span>
+              <span className="text-white text-xs">{charCount}/500</span>
             </div>
             <button className="w-full bg-[#820263] text-white py-2 rounded-full hover:bg-[#b485a8] transition">
               Enviar
             </button>
+            {status.submitted && (
+              <div
+                className={`text-center p-2 rounded ${
+                  status.success
+                    ? "bg-green-100 text-green-800"
+                    : "bg-red-100 text-red-800"
+                }`}
+              >
+                {status.message}
+              </div>
+            )}
           </form>
         </div>
 
@@ -88,7 +199,10 @@ export default function Contacto() {
           {/* Tarjeta de Información */}
           <div className="bg-transparent p-4 rounded-xl border-3 border-white w-full max-w-md">
             <div className="flex items-center gap-3 p-2 rounded-lg bg-[#EADEDA] ">
-            <FontAwesomeIcon icon={faEnvelope} className="text-[#2E294E] text-xl p-2 mr-3" />
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="text-[#2E294E] text-xl p-2 mr-3"
+              />
               <div>
                 <p className="text-black font-bold">Email</p>
                 <a
@@ -100,7 +214,10 @@ export default function Contacto() {
               </div>
             </div>
             <div className="flex items-center gap-3 p-2 rounded-lg bg-[#EADEDA] mt-3">
-            <FontAwesomeIcon icon={faPhone} className="text-[#2E294E] text-xl p-2 mr-3" />
+              <FontAwesomeIcon
+                icon={faPhone}
+                className="text-[#2E294E] text-xl p-2 mr-3"
+              />
               <div>
                 <p className="text-black font-bold">Teléfono</p>
                 <a
@@ -112,7 +229,10 @@ export default function Contacto() {
               </div>
             </div>
             <div className="flex items-center gap-3 p-2 rounded-lg bg-[#EADEDA] mt-3">
-            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-[#2E294E] text-xl p-2 mr-3" />
+              <FontAwesomeIcon
+                icon={faMapMarkerAlt}
+                className="text-[#2E294E] text-xl p-2 mr-3"
+              />
 
               <div>
                 <p className="text-black font-bold">Dirección</p>
