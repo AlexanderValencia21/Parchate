@@ -48,9 +48,8 @@ export default function Home() {
           </div>
         </div>
         <ScrollIndicator />
-      </main>
-
-      //secciones para la pagina de incio
+      </main> 
+      {/*secciones para la pagina de incio*/}
       <section className="w-full">
         <EventsSection />
       </section>
