@@ -95,6 +95,7 @@ export default function Contacto() {
         setCharCount(0);
       }
     } catch (error) {
+      console.error("Error al enviar el mensaje:", error);
       setStatus({
         submitting: false,
         submitted: true,
